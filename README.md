@@ -1,2 +1,2 @@
 # goweb
-Learning Go for Web. Test
+Learning Go for Web.
