@@ -7,19 +7,11 @@ import (
 )
 
 func Home(rw http.ResponseWriter, r *http.Request) {
-	parsedTemplate, err := render.TemplateParser("./templates/home.page.tmpl")
-	if err != nil {
-		rw.Write([]byte("Something went wrong"))
-		return
-	}
+	parsedTemplate := render.TemplateParser("./templates/home.page.tmpl")
 	parsedTemplate.Execute(rw, nil)
 }
 
 func About(rw http.ResponseWriter, r *http.Request) {
-	parsedTemplate, err := render.TemplateParser("./templates/about.page.tmpl")
-	if err != nil {
-		rw.Write([]byte("Something went wrong"))
-		return
-	}
+	parsedTemplate := render.TemplateParser("./templates/about.page.tmpl")
 	parsedTemplate.Execute(rw, nil)
 }

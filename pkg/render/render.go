@@ -1,12 +1,16 @@
 package render
 
-import "html/template"
+import (
+	"fmt"
+	"html/template"
+)
 
-func TemplateParser(f string) (*template.Template, error) {
+func TemplateParser(f string) *template.Template {
 	parsedFile, err := template.ParseFiles(f)
 	if err != nil {
-		return nil, err
+		fmt.Println("Couldn't load or parse the file.")
+		return template.New("Something went wrong")
 	}
 
-	return parsedFile, nil
+	return parsedFile
 }
