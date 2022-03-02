@@ -29,7 +29,7 @@ func InitHandlers(r Repository) {
 func (r *Repository) Home(rw http.ResponseWriter, _ *http.Request) {
 	parsedTemplate := render.Render.TemplateParser("home.page.tmpl")
 	data := []string{"Hello"}
-	parsedTemplate.Execute(rw, data)
+	parsedTemplate.Execute(rw, data[0])
 	r.Logger.Println("Home executes")
 }
 
