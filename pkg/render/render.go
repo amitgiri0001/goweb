@@ -5,10 +5,20 @@ import (
 	"log"
 )
 
-const templatesDir = "./templates/"
+var Render *Renderers
 
-func TemplateParser(f string) *template.Template {
-	parsedFile, err := template.ParseFiles(templatesDir + f)
+type Renderers struct {
+	templatesDir string
+}
+
+func InitRenderers(templatesDir string) {
+	Render = &Renderers{
+		templatesDir: templatesDir,
+	}
+}
+
+func (rd Renderers) TemplateParser(f string) *template.Template {
+	parsedFile, err := template.ParseFiles(rd.templatesDir + f)
 	if err != nil {
 		log.Println("Couldn't load or parse the file.", err)
 		parsedFile = handleParsingError(err)
@@ -16,7 +26,7 @@ func TemplateParser(f string) *template.Template {
 	}
 
 	// apply layout
-	parsedFile, err = parsedFile.ParseGlob(templatesDir + "*.layout.tmpl")
+	parsedFile, err = parsedFile.ParseGlob(rd.templatesDir + "*.layout.tmpl")
 	if err != nil {
 		log.Println("Error while applying template", err)
 		parsedFile = handleParsingError(err)
