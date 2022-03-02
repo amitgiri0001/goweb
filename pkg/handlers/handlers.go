@@ -7,11 +7,11 @@ import (
 )
 
 func Home(rw http.ResponseWriter, r *http.Request) {
-	parsedTemplate := render.TemplateParser("./templates/home.page.tmpl")
+	parsedTemplate := render.TemplateParser("home.page.tmpl")
 	parsedTemplate.Execute(rw, nil)
 }
 
 func About(rw http.ResponseWriter, r *http.Request) {
-	parsedTemplate := render.TemplateParser("./templates/about.page.tmpl")
+	parsedTemplate := render.TemplateParser("about.page.tmpl")
 	parsedTemplate.Execute(rw, nil)
 }
