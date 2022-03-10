@@ -1,11 +1,13 @@
 package handlers
 
 import (
+	"fmt"
 	"log"
 	"net/http"
 
 	"github.com/amitgiri0001/goweb/pkg/config"
 	"github.com/amitgiri0001/goweb/pkg/render"
+	"github.com/go-chi/chi/v5"
 )
 
 type Repository struct {
@@ -26,9 +28,10 @@ func InitHandlers(r Repository) {
 	render.InitRenderers(Repo.AppConfig.TemplateDirectory)
 }
 
-func (r *Repository) Home(rw http.ResponseWriter, _ *http.Request) {
+func (r *Repository) Home(rw http.ResponseWriter, hr *http.Request) {
 	parsedTemplate := render.Render.TemplateParser("home.page.tmpl")
 	data := []string{"Hello"}
+	fmt.Println(chi.URLParam(hr, "user"))
 	parsedTemplate.Execute(rw, data[0])
 	r.Logger.Println("Home executes")
 }

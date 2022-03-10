@@ -6,7 +6,6 @@ import (
 	"github.com/amitgiri0001/goweb/pkg/config"
 	"github.com/amitgiri0001/goweb/pkg/handlers"
 	"github.com/go-chi/chi/v5"
-	"github.com/go-chi/chi/v5/middleware"
 )
 
 type Router struct {
@@ -22,8 +21,9 @@ func (rt *Router) Routes() *chi.Mux {
 	}
 	handlers.InitHandlers(repo)
 
-	r.Use(middleware.Logger)
-	r.Get("/", handlers.Repo.Home)
+	r.Route("/users", func(r chi.Router) {
+		r.With(RequestLogger).Get("/{user}", handlers.Repo.Home)
+	})
 	r.Get("/about", handlers.Repo.About)
 
 	return r

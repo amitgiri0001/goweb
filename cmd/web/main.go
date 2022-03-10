@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"net/http"
+	"os"
 
 	"github.com/amitgiri0001/goweb/pkg/config"
 )
@@ -11,7 +12,8 @@ func main() {
 	appConfig := config.Appconfig{}
 
 	appConfig.SetPort(8080)
-	appConfig.SetTemplateDirectory("./templates/")
+	wd, _ := os.Getwd()
+	appConfig.SetTemplateDirectory(wd + "/templates/")
 
 	fmt.Printf("%+v", appConfig.Port)
 
