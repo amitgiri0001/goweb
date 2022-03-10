@@ -5,7 +5,7 @@ import (
 	"net/http"
 	"os"
 
-	"github.com/amitgiri0001/goweb/pkg/config"
+	"github.com/amitgiri0001/goweb/internal/config"
 )
 
 func main() {

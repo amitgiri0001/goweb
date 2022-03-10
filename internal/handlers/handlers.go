@@ -5,8 +5,8 @@ import (
 	"log"
 	"net/http"
 
-	"github.com/amitgiri0001/goweb/pkg/config"
-	"github.com/amitgiri0001/goweb/pkg/render"
+	"github.com/amitgiri0001/goweb/internal/config"
+	"github.com/amitgiri0001/goweb/internal/render"
 	"github.com/go-chi/chi/v5"
 )
 
